@@ -120,3 +120,11 @@ html{
 .today{
     background-color:#167e56;
 }
+
+#authorize_button,
+#signout_button{
+    width: 6%;
+    height: 100%;
+    background-color: #777;
+    color: aqua;
+}
