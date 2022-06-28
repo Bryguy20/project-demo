@@ -8,7 +8,7 @@ const API_KEY = 'AIzaSyDoVq1ZqFtgMxdPLv9VlmNdB7Y4lucghlo';
 
  // Authorization scopes required by the API; multiple scopes can be
  // included, separated by spaces.
- const SCOPES = 'http://www.googleapis.com/auth/calendar';
+ const SCOPES = 'http://www.googleapis.com/auth/calendar http://www.googleapis.com/auth/calendar.events' ;
 
  let tokenClient;
  let gapiInited = false;
