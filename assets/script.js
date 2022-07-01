@@ -39,8 +39,7 @@ const API_KEY = 'AIzaSyDoVq1ZqFtgMxdPLv9VlmNdB7Y4lucghlo';
      discoveryDocs: [DISCOVERY_DOC],
    });
    gapiInited = true;
-   maybeEnableButtons();
- }
+   maybeEnableButtons();}
 
  /**
   * Callback after Google Identity Services are loaded.
@@ -165,7 +164,7 @@ function loading(){
         }
       };
       
-      var request = gapi.client.calendar.events.insert({
+      var request = gapi.client.calendar.event.insert({
         'calendarId': 'primary',
         'resource': event
       });
@@ -252,7 +251,8 @@ const renderCalendar = () =>{
         days += `<div class="next-date">${j}</div>`;
         monthDays.innerHTML = days;
     }
-     
+     //if(i=== new Date().getDate()&& date.
+     //getMonth()=== new Date().getMonth())
 }
 
 
