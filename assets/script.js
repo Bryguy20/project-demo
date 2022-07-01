@@ -137,15 +137,15 @@ const API_KEY = 'AIzaSyDoVq1ZqFtgMxdPLv9VlmNdB7Y4lucghlo';
 
 function loading(){
     var event = {
-        'summary': 'Google I/O 2015',
+        'summary': 'Google I/O 2022',
         'location': '800 Howard St., San Francisco, CA 94103',
         'description': 'A chance to hear more about Google\'s developer products.',
         'start': {
-          'dateTime': '2015-05-28T09:00:00-07:00',
+          'dateTime': '2022-05-28T09:00:00-07:00',
           'timeZone': 'America/Los_Angeles'
         },
         'end': {
-          'dateTime': '2015-05-28T17:00:00-07:00',
+          'dateTime': '2022-05-28T17:00:00-07:00',
           'timeZone': 'America/Los_Angeles'
         },
         'recurrence': [
@@ -164,7 +164,7 @@ function loading(){
         }
       };
       
-      var request = gapi.client.calendar.event.insert({
+      var request = gapi.client.calendar.events.insert({
         'calendarId': 'primary',
         'resource': event
       });
