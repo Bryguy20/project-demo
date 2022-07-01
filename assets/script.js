@@ -1,3 +1,8 @@
+
+
+
+
+
 //function to access and sign out 
 
 const CLIENT_ID = '291615247325-m7onfiaasm8b1gfqvnjt5subllp6kjfk.apps.googleusercontent.com';
@@ -130,6 +135,11 @@ const API_KEY = 'AIzaSyDoVq1ZqFtgMxdPLv9VlmNdB7Y4lucghlo';
    document.getElementById('content').innerText = output;
  }
 
+ 
+ 
+
+
+
 
 
 
@@ -180,12 +190,17 @@ const renderCalendar = () =>{
     = new Date().toDateString();
     
     let days = "";
+
+    //for(let i = 1; i <= lastDay; i++){
+       // days += `<div>${i}</div>`;
+        //monthDays.innerHTML = days;
+    //   }
     
     for(let x = firstDayIndex; x > 0; x--){
         days +=`<div class="prev-date">${prevLastDay - x + 1}</div>`;
     }
     
-    for(let i = 1;i<= lastDay; i++){
+    for(let i = 1;i <= lastDay; i++){
         if(i === new Date().getDate()&& date.
         getMonth()=== new Date().getMonth()){
             days +=`<div class="today">${i}</div>`;
