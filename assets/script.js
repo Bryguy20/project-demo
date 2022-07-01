@@ -163,15 +163,19 @@ function loading(){
           ]
         }
       };
+
+      gapi.client.load('calendar', 'v3').then(function() {
+        var request = gapi.client.calendar.events.insert({
+            'calendarId': 'primary',
+            'resource': event
+          });
+          
+          request.execute(function(event) {
+            appendPre('Event created: ' + event.htmlLink);
+          });
+      })
       
-      var request = gapi.client.calendar.events.insert({
-        'calendarId': 'primary',
-        'resource': event
-      });
       
-      request.execute(function(event) {
-        appendPre('Event created: ' + event.htmlLink);
-      });
 } 
  
  
