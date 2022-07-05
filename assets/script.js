@@ -164,14 +164,27 @@ function loading(){
           ]
         }
       };
-      var app = Application.currentApplication()
-var Calendar = Application("Calendar")
- 
-var projectCalendars = Calendar.calendars.whose({name: "Project Calendar"})
-var projectCalendar = projectCalendars[0]
-var events = projectCalendar.events.whose({summary: "Important Meeting!"})
-var event = events[0]
-event.show()
+      const addCalendarEvent = async () => {
+        auth.getClient().then((auth) => {
+          calendar.events.insert(
+            {
+              auth: auth,
+              calendarId: GOOGLE_CALENDAR_ID,
+              resource: calendarEvent,
+            },
+            function (error, response) {
+              if (error) {
+                console.log("Something went wrong: " + err); // If there is an error, log it to the console
+                return;
+              }
+              console.log("Event created successfully.")
+              console.log("Event details: ", response.data); // Log the event details
+            }
+          );
+        });
+      };
+      
+      addCalendarEvent();
 
       gapi.client.load('calendar', 'v3').then(function() {
         var request = gapi.client.calendar.events.insert({
@@ -279,3 +292,18 @@ addEventListener('click', () =>{
 });
 
 renderCalendar();
+
+
+
+
+
+
+
+ //var app = Application.currentApplication()
+//var Calendar = Application("Calendar")
+ 
+//var projectCalendars = Calendar.calendars.whose({name: "Project Calendar"})
+//var projectCalendar = projectCalendars[0]
+//var events = projectCalendar.events.whose({summary: "Important Meeting!"})
+//var event = events[0]
+//event.show()
