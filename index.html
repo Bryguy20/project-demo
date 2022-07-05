@@ -5,20 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Calender</title>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link href="./assets/style.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/12afb0cbb4.js" crossorigin="anonymous"></script>
 </head>
 <body>
     
-    
-    <div class="container is-widescreen">
-        <div class="notification is-primary">
-          This container is <strong>fullwidth</strong> <em>until</em> the <code>$widescreen</code> breakpoint.
-        </div>
+  <section id="to-do-list" >  
+    <div class="card column is-4">
+      <header class="card-header">
+        <p class="card-header-title is-flex is-justify-content-center">
+          To Do List
+        </p>
+        <button class="card-header-icon" aria-label="more options">
+          <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </header>
+      <div class="card-content is-flex is-flex-direction-row">
+        <input class="input text-input is-primary mr-2" type="text" placeholder="Add to do">
+        <button class="button is-primary is-light">Primary</button>
       </div>
-
-
-
+      <footer class="card-footer is-flex is-justify-content-center">
+        <div id="to-do-items">
+        </div>
+      </footer>
+    </div>
+  </section>
 
 
  
