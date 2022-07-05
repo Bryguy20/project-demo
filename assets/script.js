@@ -136,6 +136,7 @@ const API_KEY = 'AIzaSyDoVq1ZqFtgMxdPLv9VlmNdB7Y4lucghlo';
  }
 
 function loading(){
+    document.getElementById('content').innerText = ' events found.';
     var event = {
         'summary': 'Google I/O 2022',
         'location': '800 Howard St., San Francisco, CA 94103',
