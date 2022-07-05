@@ -7,7 +7,6 @@
 
 const CLIENT_ID = '291615247325-m7onfiaasm8b1gfqvnjt5subllp6kjfk.apps.googleusercontent.com';
 const API_KEY = 'AIzaSyDoVq1ZqFtgMxdPLv9VlmNdB7Y4lucghlo';
-const GOOGLE_CALENDAR_ID = `bryansegarra044@gmail.com`;
  // Discovery doc URL for APIs used by the quickstart
  const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
 
@@ -164,27 +163,6 @@ function loading(){
           ]
         }
       };
-      const addCalendarEvent = async () => {
-        auth.getClient().then((auth) => {
-          calendar.events.insert(
-            {
-              auth: auth,
-              calendarId: GOOGLE_CALENDAR_ID,
-              resource: calendarEvent,
-            },
-            function (error, response) {
-              if (error) {
-                console.log("Something went wrong: " + err); // If there is an error, log it to the console
-                return;
-              }
-              console.log("Event created successfully.")
-              console.log("Event details: ", response.data); // Log the event details
-            }
-          );
-        });
-      };
-      
-      addCalendarEvent();
 
       gapi.client.load('calendar', 'v3').then(function() {
         var request = gapi.client.calendar.events.insert({
