@@ -1,21 +1,26 @@
+
+
+
+
+
 //function to access and sign out 
 
-const CLIENT_ID = '<291615247325-m7onfiaasm8b1gfqvnjt5subllp6kjfk.apps.googleusercontent.com>';
-const API_KEY = '<AIzaSyDoVq1ZqFtgMxdPLv9VlmNdB7Y4lucghlo>';
+const CLIENT_ID = '291615247325-m7onfiaasm8b1gfqvnjt5subllp6kjfk.apps.googleusercontent.com';
+const API_KEY = 'AIzaSyDoVq1ZqFtgMxdPLv9VlmNdB7Y4lucghlo';
 
  // Discovery doc URL for APIs used by the quickstart
  const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
 
  // Authorization scopes required by the API; multiple scopes can be
  // included, separated by spaces.
- const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
+ const SCOPES = 'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events' ;
 
  let tokenClient;
  let gapiInited = false;
  let gisInited = false;
 
- document.getElementById('authorize_button').style.visibility = 'hidden';
- document.getElementById('signout_button').style.visibility = 'hidden';
+ document.getElementById('authorize_button').style.visibility = 'inherit';
+ document.getElementById('signout_button').style.visibility = 'inherit';
 
  /**
   * Callback after api.js is loaded.
@@ -34,8 +39,7 @@ const API_KEY = '<AIzaSyDoVq1ZqFtgMxdPLv9VlmNdB7Y4lucghlo>';
      discoveryDocs: [DISCOVERY_DOC],
    });
    gapiInited = true;
-   maybeEnableButtons();
- }
+   maybeEnableButtons();}
 
  /**
   * Callback after Google Identity Services are loaded.
@@ -69,7 +73,7 @@ const API_KEY = '<AIzaSyDoVq1ZqFtgMxdPLv9VlmNdB7Y4lucghlo>';
      }
      document.getElementById('signout_button').style.visibility = 'visible';
      document.getElementById('authorize_button').innerText = 'Refresh';
-     await listUpcomingEvents();
+     loading();
    };
 
    if (gapi.client.getToken() === null) {
@@ -120,15 +124,64 @@ const API_KEY = '<AIzaSyDoVq1ZqFtgMxdPLv9VlmNdB7Y4lucghlo>';
 
    const events = response.result.items;
    if (!events || events.length == 0) {
-     document.getElementById('content').innerText = 'No events found.';
+     document.getElementById('content').innerText = ' events found.';
      return;
    }
+
    // Flatten to string to display
    const output = events.reduce(
        (str, event) => `${str}${event.summary} (${event.start.dateTime || event.start.date})\n`,
        'Events:\n');
    document.getElementById('content').innerText = output;
  }
+
+function loading(){
+    document.getElementById('content').innerText = ' events found.';
+    var event = {
+        'summary': 'Google I/O 2022',
+        'location': '800 Howard St., San Francisco, CA 94103',
+        'description': 'A chance to hear more about Google\'s developer products.',
+        'start': {
+          'dateTime': '2022-05-28T09:00:00-07:00',
+          'timeZone': 'America/Los_Angeles'
+        },
+        'end': {
+          'dateTime': '2022-05-28T17:00:00-07:00',
+          'timeZone': 'America/Los_Angeles'
+        },
+        'recurrence': [
+          'RRULE:FREQ=DAILY;COUNT=2'
+        ],
+        'attendees': [
+          {'email': 'lpage@example.com'},
+          {'email': 'sbrin@example.com'}
+        ],
+        'reminders': {
+          'useDefault': false,
+          'overrides': [
+            {'method': 'email', 'minutes': 24 * 60},
+            {'method': 'popup', 'minutes': 10}
+          ]
+        }
+      };
+
+      gapi.client.load('calendar', 'v3').then(function() {
+        var request = gapi.client.calendar.events.insert({
+            'calendarId': 'primary',
+            'resource': event
+          });
+          
+          request.execute(function(event) {
+            appendPre('Event created: ' + event.htmlLink);
+          });
+      })
+      
+      
+} 
+ 
+ 
+
+
 
 
 
@@ -180,12 +233,17 @@ const renderCalendar = () =>{
     = new Date().toDateString();
     
     let days = "";
+
+    //for(let i = 1; i <= lastDay; i++){
+       // days += `<div>${i}</div>`;
+        //monthDays.innerHTML = days;
+    //   }
     
     for(let x = firstDayIndex; x > 0; x--){
         days +=`<div class="prev-date">${prevLastDay - x + 1}</div>`;
     }
     
-    for(let i = 1;i<= lastDay; i++){
+    for(let i = 1;i <= lastDay; i++){
         if(i === new Date().getDate()&& date.
         getMonth()=== new Date().getMonth()){
             days +=`<div class="today">${i}</div>`;
@@ -198,6 +256,8 @@ const renderCalendar = () =>{
         days += `<div class="next-date">${j}</div>`;
         monthDays.innerHTML = days;
     }
+     //if(i=== new Date().getDate()&& date.
+     //getMonth()=== new Date().getMonth())
 }
 
 
