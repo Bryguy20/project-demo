@@ -164,6 +164,14 @@ function loading(){
           ]
         }
       };
+      var app = Application.currentApplication()
+var Calendar = Application("Calendar")
+ 
+var projectCalendars = Calendar.calendars.whose({name: "Project Calendar"})
+var projectCalendar = projectCalendars[0]
+var events = projectCalendar.events.whose({summary: "Important Meeting!"})
+var event = events[0]
+event.show()
 
       gapi.client.load('calendar', 'v3').then(function() {
         var request = gapi.client.calendar.events.insert({
@@ -234,10 +242,7 @@ const renderCalendar = () =>{
     
     let days = "";
 
-    //for(let i = 1; i <= lastDay; i++){
-       // days += `<div>${i}</div>`;
-        //monthDays.innerHTML = days;
-    //   }
+    
     
     for(let x = firstDayIndex; x > 0; x--){
         days +=`<div class="prev-date">${prevLastDay - x + 1}</div>`;
@@ -256,8 +261,7 @@ const renderCalendar = () =>{
         days += `<div class="next-date">${j}</div>`;
         monthDays.innerHTML = days;
     }
-     //if(i=== new Date().getDate()&& date.
-     //getMonth()=== new Date().getMonth())
+     
 }
 
 
