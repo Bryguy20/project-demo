@@ -1,135 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Calender</title>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Task Calander</title>
+	<link rel="stylesheet" href="/assets/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link href="./assets/style.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/12afb0cbb4.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    
-  <section id="to-do-list" >  
-    <div class="card column is-4">
-      <header class="card-header">
-        <p class="card-header-title is-flex is-justify-content-center">
-          To Do List
-        </p>
-        <button class="card-header-icon" aria-label="more options">
-          <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </button>
-      </header>
-      <div class="card-content is-flex is-flex-direction-row">
-        <input class="input text-input is-primary mr-2" type="text" placeholder="Add to do">
-        <button class="button is-primary is-light">Primary</button>
-      </div>
-      <footer class="card-footer is-flex is-justify-content-center">
-        <div id="to-do-items">
-        </div>
-      </footer>
-    </div>
-  </section>
-
-
- 
-    
-
-
-
-
-
-
-
-
-
-
-  <script src="./assets/script.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-         <link href="./assets/style.css" rel="stylesheet">
-</head>
-<body>
-     <!--Buttons to auth sequence and sig out-->
-    <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
-    <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
-    <pre id="content" style="white-space: pre-wrap;"></pre>
-
-<!--The calender App-->
-<div class="container">
-    <div class="calendar">
-        <div class="month">
-            <i class="fas fa-angle-left
-            prev"></i>
-            <div class="date">
-                <h1></h1>
-                <p></p>
+    <body>
+        <section id="to-do-list" >  
+          <div class="card column is-4">
+            <header class="card-header">
+              <p class="card-header-title is-flex is-justify-content-center">
+                To Do List
+              </p>
+            </header>
+            <div class="card-content is-flex is-flex-direction-row is-justify-content-center">
+                <form  action="#" class="mr-5" >
+                    <input type="text" name="item" id="item" placeholder="Add New" />
+                </form>  
+              <button id="submit" class="button is-primary is-light">Add</button>
             </div>
-            <i class="fas fa-angle-right
-            next"></i>
-        </div>
-        <div class="weekdays">
-            <div>Sun</div>
-            <div>Mon</div>
-            <div>Tues</div>
-            <div>Wed</div>
-            <div>Thu</div>
-            <div>Fri</div>
-            <div>Sat</div>
-        </div>
-        <div class="days">
-         <div class="prevdate">26</div>
-            <div class="prevdate">27</div>
-            <div class="prevdate">28</div>
-            <div class="prevdate">29</div>
-            <div class="prevdate">30</div>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
-            <div>7</div>
-            <div>8</div>
-            <div>9</div>
-            <div>10</div>
-            <div>11</div>
-            <div>12</div>
-            <div>13</div>
-            <div>14</div>
-            <div>15</div>
-            <div>16</div>
-            <div>17</div>
-            <div>18</div>
-            <div>19</div>
-            <div>20</div>
-            <div>21</div>
-            <div>22</div>
-            <div>23</div>
-            <div>24</div>
-            <div>25</div>
-            <div>26</div>
-            <div>27</div>
-            <div>28</div>
-            <div class="today">29</div>
-            <div>30</div>
-            <div>31</div>
-            <div class="next-date">1</div>
-            <div class="next-date">2</div>
-            <div class="next-date">3</div>
-            <div class="next-date">4</div>
-            <div class="next-date">5</div>
-            <div class="next-date">6</div> 
-        </div>
-    </div>
-</div>
-<script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
-<script src="./assets/script.js"></script>
+            <footer class="card-footer is-flex is-justify-content-center">
+                <ul id="list"></ul>
+            </footer>
+          </div>
+          <script src="/assets/script.js"></script>
+        </section>
 </body>
 </html>
