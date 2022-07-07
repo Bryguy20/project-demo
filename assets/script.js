@@ -275,3 +275,50 @@ addEventListener('click', () =>{
 });
 
 renderCalendar();
+
+// add events section
+//variables
+let eventbg = document.querySelector(".event-bg");
+let addevent = document.querySelector("#addevent");
+let eventname = document.querySelector(".eventname");
+let eventbtn = document.querySelector("#event-btn");
+
+eventbtn.addEventListener("click", () => {
+  eventbg.style.display = "flex";
+})
+
+addevent.addEventListener("click", () => {
+  eventbg.style.display = "none";
+})
+
+//todays event modal
+
+let dayEvent = document.querySelector(".eventmodal-bg");
+let dailyclosebtn = document.querySelector("#dailyclose-btn");
+let today = document.querySelector(".today");
+
+
+today.addEventListener("click", () => {
+  dayEvent.style.display = "flex";
+})
+
+dailyclosebtn.addEventListener("click", () => {
+  dayEvent.style.display = "none";
+})
+
+let evntname = document.querySelector("#eventname");
+let evntdes = document.querySelector("#eventdes");
+let evnttype = document.querySelector("#type");
+let evntinfo = document.querySelector("#info");
+
+function EvntTypeInput() {
+
+  evnttype.innerHTML = evntname.value;
+
+}
+
+function EvntDesInput() {
+  
+  evntinfo.innerHTML = evntdes.value;
+  
+}

@@ -128,3 +128,112 @@ html{
     background-color: #777;
     color: aqua;
 }
+
+.event{
+    display: flex;
+    width: 500px;
+    height: 200px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #167e56;
+    border-style: solid 2px #167e56;
+    border-radius: 12px;
+}
+
+.evnt{
+    padding: 20px;
+    background-color: #167e56;
+}
+
+.event input{
+    display: flex;
+    height: 50px;
+    width: 250px;
+    padding: 20px;
+    border-style: #167e56 solid 2px;
+    border-radius: 12px;
+    background-color: #12121f;
+    margin-bottom: 10px;
+}
+
+.event button{
+    background-color: #167e56;
+    padding: 5px 15px ;
+    border-style: #12121f solid 2px;
+    border-radius: 4px;
+}
+
+.event-bg{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.today:hover{
+    background-color: #dadce0;
+    border: 0.2rem solid #777;
+    cursor: pointer;
+}
+
+.eventmodal-bg{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.eventmodal{
+    display: flex;
+    width: 500px;
+    height: 200px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #167e56;
+    border-style: solid 2px #167e56;
+    border-radius: 12px;
+}
+
+.type-info-bg{
+    background-color: #167e56;
+}
+
+.type{
+    display: flex;
+    height: 50px;
+    width: 250px;
+    padding: 20px;
+    border-style: #167e56 solid 2px;
+    border-radius: 12px;
+    background-color: #12121f;
+    margin-bottom: 10px;
+}
+
+
+.info{
+    display: inline-flex;
+    height: 100px;
+    width: 250px;
+    padding: 20px;
+    border-style: #167e56 solid 2px;
+    border-radius: 12px;
+    background-color: #12121f;
+}
+
+#dailyclose-btn{
+    background-color: #167e56;
+    padding: 5px 15px ;
+    border-style: #12121f solid 2px;
+    border-radius: 4px;
+
+}

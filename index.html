@@ -17,6 +17,7 @@
     <button id="authorize_button" onclick="handleAuthClick()"style="visibility: inherit;">Authorize</button>
     <button id="signout_button" onclick="handleSignoutClick()"style="visibility: inherit;">Sign Out</button>
     <button id="content" onclick="handleAuthClick()">Event</button>
+    <button id="event-btn">Add Event</button>
 
      <div id="content'"></div>
 <!--The calender App-->
@@ -32,6 +33,33 @@
             <i class="fas fa-angle-right
             next"></i>
         </div>
+
+        <!-- Add Events Modal -->
+        <div class="event-bg">
+            <div class="event">
+                <div class="evnt">
+                    <input type="text" name="eventname" id="eventname" placeholder="Event Type" oninput="return EvntTypeInput()">
+                    <input type="text" name="eventdes" id="eventdes" placeholder="Event Description" oninput="return EvntDesInput()">
+                </div>
+                <button id="addevent">Add Event</button>
+            </div>
+        </div>
+
+        <!-- Daily Events Modal-->
+        <div class="eventmodal-bg">
+            <div class="eventmodal">
+                <div class="type-info-bg">
+                    <div class="type">
+                        <p id="type"></p>
+                    </div>
+                    <div class="info">
+                        <p id="info"></p>
+                    </div>
+                </div>
+                <button id="dailyclose-btn">Close</button>
+            </div>
+        </div>
+
         <div class="weekdays">
             <div>Sun</div>
             <div>Mon</div>
