@@ -7,7 +7,6 @@
 
 const CLIENT_ID = '291615247325-m7onfiaasm8b1gfqvnjt5subllp6kjfk.apps.googleusercontent.com';
 const API_KEY = 'AIzaSyDoVq1ZqFtgMxdPLv9VlmNdB7Y4lucghlo';
-
  // Discovery doc URL for APIs used by the quickstart
  const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
 
@@ -234,10 +233,7 @@ const renderCalendar = () =>{
     
     let days = "";
 
-    //for(let i = 1; i <= lastDay; i++){
-       // days += `<div>${i}</div>`;
-        //monthDays.innerHTML = days;
-    //   }
+    
     
     for(let x = firstDayIndex; x > 0; x--){
         days +=`<div class="prev-date">${prevLastDay - x + 1}</div>`;
@@ -256,8 +252,7 @@ const renderCalendar = () =>{
         days += `<div class="next-date">${j}</div>`;
         monthDays.innerHTML = days;
     }
-     //if(i=== new Date().getDate()&& date.
-     //getMonth()=== new Date().getMonth())
+     
 }
 
 
@@ -275,3 +270,18 @@ addEventListener('click', () =>{
 });
 
 renderCalendar();
+
+
+
+
+
+
+
+ //var app = Application.currentApplication()
+//var Calendar = Application("Calendar")
+ 
+//var projectCalendars = Calendar.calendars.whose({name: "Project Calendar"})
+//var projectCalendar = projectCalendars[0]
+//var events = projectCalendar.events.whose({summary: "Important Meeting!"})
+//var event = events[0]
+//event.show()
