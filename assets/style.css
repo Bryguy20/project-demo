@@ -1,0 +1,245 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+}
+
+html,body {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+
+
+#list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#list.li {
+    color: #082950;
+    font-weight: 400;
+    border-bottom: 1px solid #cfcbcc;
+    line-height: 1.5;
+    padding: 8px 0;
+}
+
+#list.li:before {
+    content: "□";
+    padding: 10px 10px;
+    font-size: 20px;
+}
+
+#list.li:hover {
+    cursor: pointer;
+    color: rgb(19, 19, 19)
+}
+
+#list.li:last-child {
+    border-bottom: none;
+}
+
+.checked {
+    color: green;
+}
+
+.checked:before {
+    content: "✓";
+    padding: 10px 10px;
+    font-size: 20px;
+}
+
+.checked:hover {
+    text-decoration: none;
+}
+
+.checked:after {
+    content: "Delete";
+    color: rgb(255, 255, 255);
+    background-color: red;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    text-align: right;
+    margin-left: 1rem;
+}
+
+.checked:hover:after {
+    background-color: rgba(107, 0, 0, 0.692);
+}
+
+
+
+#calendar {
+    width: 158rem;
+    height: 96rem;
+}
+
+
+#weekdays {
+    width: 100%;
+    height: 5rem;
+    padding: 0 0.4rem;
+}
+
+#weekdays span {
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.5rem;
+    width: calc(100% / 7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0,
+            0.5);
+    text-align: center;
+}
+
+#days {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.2rem;
+}
+
+#days span {
+
+    /* margin: 6.5rem;*/
+    width: calc(100% / 7);
+    /*height: 5rem;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*text-shadow: 0 0.3rem 0.5rem rgba(0,0,0,
+        0.5);*/
+    transition: background-color 0.2s;
+}
+
+#days span:hover:not(.today) {
+    background-color: #262626;
+    cursor: pointer;
+}
+
+.prev-date,
+.next-date {
+    opacity: 0.5;
+}
+
+.today {
+    background-color: #ffffff52;
+}
+
+.event{
+    z-index: 1;
+    display: flex;
+    width: 500px;
+    height: 200px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: slategray;
+    border-style: solid 2px black;
+    border-radius: 12px;
+}
+
+.evnt{
+    padding: 20px;
+    background-color: slategray;
+}
+
+.event input{
+    display: flex;
+    height: 50px;
+    width: 250px;
+    padding: 20px;
+    border-style: slategray solid 2px;
+    border-radius: 12px;
+    background-color: #12121f;
+    margin-bottom: 10px;
+}
+
+.event button{
+    background-color: slategray;
+    padding: 5px 15px ;
+    border-style: #12121f solid 2px;
+    border-radius: 4px;
+}
+
+.event-bg{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.today:hover{
+    background-color: #dadce0;
+    border: 0.2rem solid #777;
+    cursor: pointer;
+}
+
+.eventmodal-bg{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.eventmodal{
+    display: flex;
+    width: 500px;
+    height: 200px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: slategray;
+    border-style: solid 2px slategray;
+    border-radius: 12px;
+}
+
+.type-info-bg{
+    background-color: slategray;
+}
+
+.type{
+    display: flex;
+    height: 50px;
+    width: 250px;
+    padding: 20px;
+    border-style: slategray solid 2px;
+    border-radius: 12px;
+    background-color: #12121f;
+    margin-bottom: 10px;
+}
+
+
+.info{
+    display: inline-flex;
+    height: 100px;
+    width: 250px;
+    padding: 20px;
+    border-style: slategray solid 2px;
+    border-radius: 12px;
+    background-color: #12121f;
+}
+
+#dailyclose-btn{
+    background-color: slategray;
+    padding: 5px 15px ;
+    border-style: #12121f solid 2px;
+    border-radius: 4px;
+
+}
+

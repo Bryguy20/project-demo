@@ -1,38 +1,326 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Calender</title>
+<html>
 
-    <link href="./assets/style.css" rel="stylesheet">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Calender</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="./assets/style.css" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+
 </head>
+
 <body>
+  <div class="columns is-multiline">
     
-    
-    <div class="container is-widescreen">
-        <div class="notification is-primary">
-          This container is <strong>fullwidth</strong> <em>until</em> the <code>$widescreen</code> breakpoint.
+
+
+    <!-- left column: greeting, date/time, calendar -->
+    <div
+      class="column has-background-dark has-text-light	is-three-quarters-desktop is-three-quarters-tablet is-full-mobile">
+
+      <!-- greeting, date+time -->
+      <div class="columns has-background-dark mx-2">
+        <div class="column is-three-quarters-desktop is-one-fourth-tablet is-full-mobile has-background-dark">
+          <div class="box has-background-grey m-2">
+            <div class="container is-flex is-justify-content-space-between">
+              <div class="container is-flex is-align-items-flex-end is-justify-content-center">
+                <!-- greeting -->
+                <p class="title is-4 has-text-light	" id="greeting"></p>
+                <!-- name -->
+                <p class="is-capitalized title has-text-light	" id="results"></p>
+              </div>
+              <!-- reset button -->
+
+              <button class="button has-background-dark has-text-light	 js-modal-trigger is-flex"
+                data-target="nameModal">
+                <i class='bx bx-rename'></i>
+              </button>
+
+            </div>
+
+          </div>
+
         </div>
+        <div class="column is-one-quarter-desktop is-one-quarter-tablet is-full-mobile has-background-dark">
+          <!-- clock -->
+          <div class="box has-background-grey is-flex is-flex-direction-column is-align-items-center  mx-2">
+            <div class=""><span class="subtitle is-5 has-text-light has-text-weight-bold	" id="monthDay">current
+                date</span>
+            </div>
+            <div><span id="clock" class="title is-5-desktop is-6-tablet">current time</span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <!-- calendar -->
+
+
+      <div class="section has-background-dark">
+        <div class="container is-flex is-justify-content-center is-align-items-center">
+
+          <div id="calendar">
+
+            <div
+              class="box has-background-grey-lighter	 is-flex is-justify-content-space-between is is-align-items-center has-background-lighter"
+              id="month">
+              <button id="prev" class="button is-large  has-background-grey-lighter"><span class="icon is-large"><i
+                    class="fas fa-angle-left"></i></span></button>
+              <div class="section is-flex is-flex-direction-column is-align-items-center is-small">
+                <span class="title is-uppercase has-text-weight-bold is-1" id="monthname"></span>
+                <div class="content">
+                  <button class="button is-info" id="event-btn">Add unsynced event</button>
+                </div>
+
+              </div>
+              <button id="next" class="button is-large has-background-grey-lighter"><span class="icon is-large"><i
+                    class="fas fa-angle-right"></i></span></button>
+            </div>
+
+
+
+            <!-- Add Events Modal -->
+            <div class="event-bg">
+              <div class="event">
+                <div class="evnt">
+                  <input type="text" name="eventname" id="eventname" placeholder="Event Type"
+                    oninput="return EvntTypeInput()">
+                  <input type="text" name="eventdes" id="eventdes" placeholder="Event Description"
+                    oninput="return EvntDesInput()">
+                </div>
+                <button id="addevent">Add Event</button>
+              </div>
+            </div>
+
+            <!-- Daily Events Modal-->
+            <div class="eventmodal-bg">
+              <div class="eventmodal">
+                <div class="type-info-bg">
+                  <div class="type">
+                    <p id="type"></p>
+                  </div>
+                  <div class="info">
+                    <p id="info"></p>
+                  </div>
+                </div>
+                <button id="dailyclose-btn">Close</button>
+              </div>
+            </div>
+
+
+            <div id="weekdays"
+              class="is-flex is-align-items-center is-align-content-space-between is-justify-content-center">
+              <span class="is-size-3">S</span>
+              <span class="is-size-3">M</span>
+              <span class="is-size-3">T</span>
+              <span class="is-size-3">W</span>
+              <span class="is-size-3">T</span>
+              <span class="is-size-3">F</span>
+              <span class="is-size-3">S</span>
+            </div>
+            <div id="days"
+              class="content is-flex is-flex-wrap-wrap is-large is-align-items-center is-align-content-space-between is-justify-content-center p-2 mx-1">
+              <span class="prevdate">26</span>
+              <span class="prevdate">27</span>
+              <span class="prevdate">28</span>
+              <span class="prevdate">29</span>
+              <span class="prevdate">30</span>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+              <span>6</span>
+              <span>7</span>
+              <span>8</span>
+              <span>9</span>
+              <span>10</span>
+              <span>11</span>
+              <span>12</span>
+              <span>13</span>
+              <span>14</span>
+              <span>15</span>
+              <span>16</span>
+              <span>17</span>
+              <span>18</span>
+              <span>19</span>
+              <span>20</span>
+              <span>21</span>
+              <span>22</span>
+              <span>23</span>
+              <span>24</span>
+              <span>25</span>
+              <span>26</span>
+              <span>27</span>
+              <span>28</span>
+              <span class="today">29</span>
+              <span>30</span>
+              <span>31</span>
+              <span class="next-date">1</span>
+              <span class="next-date">2</span>
+              <span class="next-date">3</span>
+              <span class="next-date">4</span>
+              <span class="next-date">5</span>
+              <span class="next-date">6</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+    <!-- right column: weather, brief, and to-do -->
+
+    <div class="column has-background-dark is-one-quarter-tablet is-one-quarter-desktop is-full-mobile">
+
+      <!-- weatherapp -->
+
+      <div
+        class="box has-text-weight-bold has-background-info-light is-size-4-mobile is-size-5-tablet is-size-5-desktop m-2 has-text-centered">
+        <div class="card is-shadowless	has-background-light">
+          <div class="card-content">
+            <p class="title">3 Day Forecast</p>
+            <div class="content is-size-6-desktop">
+              <span class="subtitle is-4 has-text-weight-bold is-underlined">For your location</span>
+              <br>
+              <br>
+              <div id="sevenDay" class="content is-flex-direction-column">
+                <p id="tempIs"></p>
+                <p id="feelsLike"></p>
+                <p id="humidity"></p>
+                <p id="uvIndex"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- brief -->
+
+
+
+      <div
+        class="box mx-2 has-text-weight-bold has-background-info-light is-size-4-mobile is-size-5-tablet is-size-5-desktop has-text-centered">
+        <div class="card has-background-light">
+          <div class="card-content">
+            <div id="googleEvents" class="content">
+              Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at
+              eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras
+              mattis consectetur purus sit amet fermentum.
+            </div>
+          </div>
+          <footer class="card-footer ">
+            <a id="authorize_button" onclick="handleAuthClick()"
+              class="card-footer-item has-background-info has-text-info-light">
+              <div class="content"><i class='bx bxl-google'></i><span>&nbsp;Sign in&nbsp;</span></div>
+            </a>
+            <a id="signout_button" onclick="handleSignoutClick()"
+              class="card-footer-item has-background-info-dark has-text-link-light">
+              <div class="content"><span>&nbsp;Sign
+                  Out&nbsp;</span></div>
+            </a>
+            <a id="googleEventsBtn" class="card-footer-item has-background-info-dark has-text-link-light"
+              onclick="listUpcomingEvents()">
+              <div class="content"><span>&nbsp;Google Events&nbsp;</span></div>
+            </a>
+          </footer>
+        </div>
+
+      </div>
+      <!-- to-do -->
+      <div id="to-do-list"
+        class="box has-background-info-light has-text-weight-bold is-size-4-mobile is-size-5-tablet is-size-5-desktop  m-2">
+
+        <div class="card has-background-light">
+          <header class="card-header">
+            <p class="card-header-title is-flex is-justify-content-center">
+              To Do List
+            </p>
+          </header>
+          <div class="card-content is-flex is-flex-direction-row is-justify-content-center">
+            <form id="todoForm" action="#" class="mr-5">
+              <input type="text" name="item" id="todoItem" placeholder="Add New item" />
+            </form>
+            <button id="todoSubmit" class="button is-info is-light is-size-5-mobile">Add</button>
+          </div>
+          <footer class="card-footer is-flex is-justify-content-center">
+            <ul id="todoList"></ul>
+          </footer>
+        </div>
+
+
       </div>
 
 
 
 
+    </div>
 
- 
-    
+    <!-- footer -->
+    <div class="column is-full-mobile is-full-tablet is-full-desktop has-background-dark is-size-5 has-text-weight-bold">
+      <footer class="footer has-background-dark has-text-light">
+        <div class="content has-text-centered">
+          <span>
+            Bulma for CSS styling by <a href="https://jgthms.com">Jeremy Thomas</a>. The source is
+            <a href="https://bulma.io/documentation/">Bulma Docs</a>
+          </span><br><span>
+            Weather data provided by: <a href="https://openweathermap.org/api/one-call-3">One Call API
+              3.0</a>
+          </span><br>
+          <span>Google Calendar <a href="https://developers.google.com/calendar/api">API Docs</a></span>
+        </div>
+      </footer>
+
+      <!-- modal for user name input -->
+
+      <div id="nameModal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content is-flex is-justify-content-center">
+          <div class="notification is-dark">
+            <h3 class="title">What's your name?</h3>
+            <form id="nameForm" onsubmit="return false">
+              <div class="field has-addons">
+                <div class="control">
+                  <input type="text" class="input" name="username" id="userTyped" placeholder="Let's make it personal.">
+                </div>
+                <div class="control">
+                  <input type="button" class="button is-info" value="submit" onclick="saveName()">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
 
 
-
-
-
-
-
-
-
-
-  <script src="./assets/script.js"></script>
 </body>
+
+<!-- load scripts -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+<script src="./assets/calendarapp.js"></script>
+<script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+<script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+<script src="./assets/greeting.js"></script>
+<script src="./assets/weatherapp.js"></script>
+<script src="./assets/todoapp.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </html>
