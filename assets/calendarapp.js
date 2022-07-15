@@ -77,7 +77,7 @@ function handleAuthClick() {
     document.getElementById('signout_button').className = "card-footer-item has-background-info-dark has-text-link-light";
     document.getElementById('googleEventsBtn').className = "card-footer-item has-background-info-dark has-text-link-light";
     document.getElementById('authorize_button').className = "card-footer-item is-invisible";
-    loading();
+    // loading();
   };
 
   if (gapi.client.getToken() === null) {
@@ -130,7 +130,7 @@ async function listUpcomingEvents() {
 
   const events = response.result.items;
   if (!events || events.length == 0) {
-    document.getElementById('googleEvents').innerText = ' events found.';
+    document.getElementById('googleEvents').innerText = 'No events found.';
     return;
   }
 
@@ -141,49 +141,49 @@ async function listUpcomingEvents() {
   document.getElementById('googleEvents').innerText = output;
 }
 
-function loading() {
-  document.getElementById('googleEvents').innerText = ' events found.';
-  var event = {
-    'summary': 'Google I/O 2022',
-    'location': '800 Howard St., San Francisco, CA 94103',
-    'description': 'A chance to hear more about Google\'s developer products.',
-    'start': {
-      'dateTime': '2022-05-28T09:00:00-07:00',
-      'timeZone': 'America/Los_Angeles'
-    },
-    'end': {
-      'dateTime': '2022-05-28T17:00:00-07:00',
-      'timeZone': 'America/Los_Angeles'
-    },
-    'recurrence': [
-      'RRULE:FREQ=DAILY;COUNT=2'
-    ],
-    'attendees': [
-      { 'email': 'lpage@example.com' },
-      { 'email': 'sbrin@example.com' }
-    ],
-    'reminders': {
-      'useDefault': false,
-      'overrides': [
-        { 'method': 'email', 'minutes': 24 * 60 },
-        { 'method': 'popup', 'minutes': 10 }
-      ]
-    }
-  };
+// function loading() {
+//   document.getElementById('googleEvents').innerText = ' events found.';
+//   var event = {
+//     'summary': 'Google I/O 2022',
+//     'location': '800 Howard St., San Francisco, CA 94103',
+//     'description': 'A chance to hear more about Google\'s developer products.',
+//     'start': {
+//       'dateTime': '2022-05-28T09:00:00-07:00',
+//       'timeZone': 'America/Los_Angeles'
+//     },
+//     'end': {
+//       'dateTime': '2022-05-28T17:00:00-07:00',
+//       'timeZone': 'America/Los_Angeles'
+//     },
+//     'recurrence': [
+//       'RRULE:FREQ=DAILY;COUNT=2'
+//     ],
+//     'attendees': [
+//       { 'email': 'lpage@example.com' },
+//       { 'email': 'sbrin@example.com' }
+//     ],
+//     'reminders': {
+//       'useDefault': false,
+//       'overrides': [
+//         { 'method': 'email', 'minutes': 24 * 60 },
+//         { 'method': 'popup', 'minutes': 10 }
+//       ]
+//     }
+//   };
 
-  gapi.client.load('calendar', 'v3').then(function () {
-    var request = gapi.client.calendar.events.insert({
-      'calendarId': 'primary',
-      'resource': event
-    });
+//   gapi.client.load('calendar', 'v3').then(function () {
+//     var request = gapi.client.calendar.events.insert({
+//       'calendarId': 'primary',
+//       'resource': event
+//     });
 
-    request.execute(function (event) {
-      appendPre('Event created: ' + event.htmlLink);
-    });
-  })
+//     request.execute(function (event) {
+//       appendPre('Event created: ' + event.htmlLink);
+//     });
+//   })
 
 
-}
+// }
 
 
 //Calendar Function
